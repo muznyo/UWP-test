@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp;
-using Fluent.Icons;
 using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
@@ -33,7 +32,9 @@ namespace TestUWP1
             this.InitializeComponent();
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(AppTitleBar);
+            //hiding titlebar
             ApplicationViewTitleBar formattableTitleBar = ApplicationView.GetForCurrentView().TitleBar;
+            //changing background for minimize, maximize and close buttons
             formattableTitleBar.ButtonBackgroundColor = Colors.Transparent;
             formattableTitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
