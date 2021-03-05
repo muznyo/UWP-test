@@ -34,9 +34,15 @@ namespace TestUWP1
             Window.Current.SetTitleBar(AppTitleBar);
             //hiding titlebar
             ApplicationViewTitleBar formattableTitleBar = ApplicationView.GetForCurrentView().TitleBar;
+            ApplicationView formattableTitle = ApplicationView.GetForCurrentView();
+
+            formattableTitle.Title = "UWP test";
             //changing background for minimize, maximize and close buttons
             formattableTitleBar.ButtonBackgroundColor = Colors.Transparent;
             formattableTitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            formattableTitleBar.BackgroundColor=Colors.Transparent;
+
         }
+
     }
 }

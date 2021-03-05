@@ -11,16 +11,14 @@
 
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
-        <muxc:NavigationView IsBackButtonVisible="Collapsed" IsSettingsVisible="True" PaneDisplayMode="Left" PaneTitle="NavigationView" IsTitleBarAutoPaddingEnabled="False" Background="{ThemeResource SystemChromeMediumColor}" Grid.ColumnSpan="2">
+        <muxc:NavigationView IsBackButtonVisible="Collapsed" IsSettingsVisible="True"  ExpandedModeThresholdWidth="700" CompactModeThresholdWidth="100" PaneDisplayMode="Auto" IsPaneToggleButtonVisible="True" IsTitleBarAutoPaddingEnabled="False" Background="{ThemeResource SystemChromeMediumColor}">
+            <muxc:NavigationView.PaneHeader>
+                <TextBlock Text="Uwp app test" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            </muxc:NavigationView.PaneHeader>
             <muxc:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
+                <AutoSuggestBox CornerRadius="5" QueryIcon="Find" AutomationProperties.Name="Search" />
             </muxc:NavigationView.AutoSuggestBox>
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItem Content="Domů">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;"/>
@@ -36,24 +34,22 @@
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8D6;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
+            </muxc:NavigationView.MenuItems>
+            <muxc:NavigationView.FooterMenuItems>
+                <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItem Content="Uživatel">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE2AF;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-            </muxc:NavigationView.MenuItems>
+            </muxc:NavigationView.FooterMenuItems>
+            <muxc:NavigationView.Header>
+                <TextBlock Text="Home" Margin="0,35,0,0"/>
+            </muxc:NavigationView.Header>
         </muxc:NavigationView>
+        
         <!--custom titlebar-->
         <Grid x:Name="AppTitleBar" Background="Transparent" Height="28" Margin="40,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Grid>
-        <Grid.ColumnDefinitions>
-
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="20*"/>
-
-        </Grid.ColumnDefinitions>
-        </Grid>
     </Grid>
 
 </Page>
