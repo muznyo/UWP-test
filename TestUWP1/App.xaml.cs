@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,15 @@ namespace TestUWP1
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+                // Get theme choice from LocalSettings.
+                object value = ApplicationData.Current.LocalSettings.Values["themeSetting"];
+
+                if (value != null)
+                {
+                    // Apply theme choice.
+                    App.Current.RequestedTheme = (ApplicationTheme)(int)value;
+                }
         }
 
         /// <summary>
@@ -39,11 +49,9 @@ namespace TestUWP1
         /// <param name="e">Podrobnosti o žádosti o spuštění a procesu</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-
             // Neopakovat inicializaci aplikace, pokud už má okno obsah,
             // jenom ověřit, jestli je toto okno aktivní
-            if (rootFrame == null)
+            if (!(Window.Current.Content is Frame rootFrame))
             {
                 // Vytvořit objekt Frame, který bude fungovat jako kontext navigace, a spustit procházení první stránky
                 rootFrame = new Frame();
@@ -66,7 +74,7 @@ namespace TestUWP1
                     // Pokud není navigační zásobník obnovený, přejít na první stránku
                     // a nakonfigurovat novou stránku předáním požadovaných informací ve formě
                     // parametru navigace
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(Home), e.Arguments);
                 }
                 // Zkontrolovat, jestli je aktuální okno aktivní
                 Window.Current.Activate();

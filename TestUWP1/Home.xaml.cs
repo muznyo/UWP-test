@@ -16,42 +16,29 @@ using Microsoft.Toolkit.Uwp;
 using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
-using Windows.Storage;
 
 
-// Dokumentaci k šabloně položky Prázdná stránka najdete na adrese https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x405
+
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace TestUWP1
 {
     /// <summary>
-    /// Prázdná stránka, která se dá použít samostatně nebo v rámci objektu Frame
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Home : Page
     {
-        public MainPage()
+        public Home()
         {
             this.InitializeComponent();
             TitleBar();
 
 
-        }
-        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
-        {
-            // Save theme choice to LocalSettings. 
-            // ApplicationTheme enum values: 0 = Light, 1 = Dark
-            ApplicationData.Current.LocalSettings.Values["themeSetting"] =
-                                                             ((ToggleSwitch)sender).IsOn ? 0 : 1;
-        }
-
-        private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
-        {
-            ((ToggleSwitch)sender).IsOn = App.Current.RequestedTheme == ApplicationTheme.Light;
-
 
         }
-
         public void TitleBar()
         {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(AppTitleBar);
             //hiding titlebar
             ApplicationViewTitleBar formattableTitleBar = ApplicationView.GetForCurrentView().TitleBar;
@@ -92,19 +79,17 @@ namespace TestUWP1
                     case "HomeNav":
                         ContentFrame.Navigate(typeof(Home));
                         break;
-                    case "SettingsNav":
-                        ContentFrame.Navigate(typeof(MainPage));
-                        break;
-
                         //case "AppNav"
                         //case "MusicNav"
                         //case "UserNav"
                 }
+
             }
         }
+
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-                ContentFrame.Navigate(typeof(MainPage));
+            ContentFrame.Navigate(typeof(Home));
         }
     }
 }
