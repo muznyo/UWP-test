@@ -31,7 +31,7 @@ namespace TestUWP1
         public MainPage()
         {
             this.InitializeComponent();
-            TitleBar();
+            //TitleBar();
 
 
         }
@@ -50,61 +50,55 @@ namespace TestUWP1
 
         }
 
-        public void TitleBar()
-        {
-            Window.Current.SetTitleBar(AppTitleBar);
-            //hiding titlebar
-            ApplicationViewTitleBar formattableTitleBar = ApplicationView.GetForCurrentView().TitleBar;
-            //changing background for minimize, maximize and close buttons
-            formattableTitleBar.ButtonBackgroundColor = Colors.Transparent;
-            formattableTitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            formattableTitleBar.BackgroundColor = Colors.Transparent;
+        //public void TitleBar()
+        //{
+        //    Window.Current.SetTitleBar(AppTitleBar);
+        //    //hiding titlebar
+        //    ApplicationViewTitleBar formattableTitleBar = ApplicationView.GetForCurrentView().TitleBar;
+        //    //changing background for minimize, maximize and close buttons
+        //    formattableTitleBar.ButtonBackgroundColor = Colors.Transparent;
+        //    formattableTitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+        //    formattableTitleBar.BackgroundColor = Colors.Transparent;
 
-            var isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
+        //    var isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
 
-            if (isDark)
-            {
-                formattableTitleBar.ButtonForegroundColor = Colors.White;
-                formattableTitleBar.ButtonHoverForegroundColor = Colors.White;
-                formattableTitleBar.ButtonHoverBackgroundColor = Colors.DarkGray;
+        //    if (isDark)
+        //    {
+        //        formattableTitleBar.ButtonForegroundColor = Colors.White;
+        //        formattableTitleBar.ButtonHoverForegroundColor = Colors.White;
+        //        formattableTitleBar.ButtonHoverBackgroundColor = Colors.DarkGray;
 
-            }
-            else
-            {
-                formattableTitleBar.ButtonForegroundColor = Colors.Black;
-                formattableTitleBar.ButtonHoverForegroundColor = Colors.Black;
-                formattableTitleBar.ButtonHoverBackgroundColor = Colors.LightGray;
-            }
+        //    }
+        //    else
+        //    {
+        //        formattableTitleBar.ButtonForegroundColor = Colors.Black;
+        //        formattableTitleBar.ButtonHoverForegroundColor = Colors.Black;
+        //        formattableTitleBar.ButtonHoverBackgroundColor = Colors.LightGray;
+        //    }
 
-        }
+        //}
 
-        private void NavView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
-        {
-            if (args.IsSettingsSelected)
-            {
-                ContentFrame.Navigate(typeof(MainPage));
-            }
-            else
-            {
-                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
-                switch (item.Tag.ToString())
-                {
-                    case "HomeNav":
-                        ContentFrame.Navigate(typeof(Home));
-                        break;
-                    case "SettingsNav":
-                        ContentFrame.Navigate(typeof(MainPage));
-                        break;
+        //private void NavView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
+        //{
 
-                        //case "AppNav"
-                        //case "MusicNav"
-                        //case "UserNav"
-                }
-            }
-        }
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
-        {
-                ContentFrame.Navigate(typeof(MainPage));
-        }
+        //        NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+        //        switch (item.Tag.ToString())
+        //        {
+        //            case "HomeNav":
+        //                ContentFrame.Navigate(typeof(Home));
+        //                break;
+        //            //case "SettingsNav":
+        //            //    ContentFrame.Navigate(typeof(MainPage));
+        //            //    break;
+
+        //                //case "AppNav"
+        //                //case "MusicNav"
+        //                //case "UserNav"
+        //        }
+        //}
+        //private void NavView_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //        ContentFrame.Navigate(typeof(MainPage));
+        //}
     }
 }

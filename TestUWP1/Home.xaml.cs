@@ -67,29 +67,24 @@ namespace TestUWP1
 
         private void NavView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            if (args.IsSettingsSelected)
-            {
-                ContentFrame.Navigate(typeof(MainPage));
-            }
-            else
-            {
                 NavigationViewItem item = args.SelectedItem as NavigationViewItem;
                 switch (item.Tag.ToString())
                 {
                     case "HomeNav":
                         ContentFrame.Navigate(typeof(Home));
                         break;
-                        //case "AppNav"
-                        //case "MusicNav"
-                        //case "UserNav"
-                }
+                    case "SettingsNav":
+                        ContentFrame.Navigate(typeof(MainPage));
+                        break;
+                    //case "AppNav"
+                    //case "MusicNav"
+                    //case "UserNav"
 
-            }
+                }
         }
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(Home));
         }
     }
 }
