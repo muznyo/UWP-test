@@ -4,88 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TestUWP1"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemChromeMediumColor}">
 
     <Grid>
-        <muxc:NavigationView x:Name="NavView" Loaded="NavView_Loaded" SelectionChanged="NavView_SelectionChanged" IsBackButtonVisible="Collapsed" IsSettingsVisible="False"  ExpandedModeThresholdWidth="700" CompactModeThresholdWidth="100" PaneDisplayMode="Auto" IsPaneToggleButtonVisible="True" IsTitleBarAutoPaddingEnabled="False" Background="{ThemeResource SystemChromeMediumColor}">
-            <muxc:NavigationView.PaneHeader>
-                <TextBlock Text="Uwp app test" VerticalAlignment="Center" Margin="2,0,0,0"/>
-            </muxc:NavigationView.PaneHeader>
-            <muxc:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
-            </muxc:NavigationView.AutoSuggestBox>
-            <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Domů" Tag="HomeNav" x:Name="HomeItem">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Aplikace" Tag="AppNav">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE74C;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Hudba" Tag="MusicNav">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8D6;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-            </muxc:NavigationView.MenuItems>
-            <muxc:NavigationView.FooterMenuItems>
-                <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItem Content="Uživatel" Tag="UserNav">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE2AF;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Nastavení" Tag="SettingsNav">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE115;"/>
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-
-            </muxc:NavigationView.FooterMenuItems>
-
-            <muxc:NavigationView.Header>
-                    <TextBlock Text="Home" Margin="0,35,0,0"/>
-                </muxc:NavigationView.Header>
-                <StackPanel>
-                    <Button Margin="10,0,0,0" Content="File Options">
-
-                        <Button.Flyout>
-                            <MenuFlyout>
-                                <MenuFlyout.MenuFlyoutPresenterStyle>
-                                    <Style TargetType="MenuFlyoutPresenter">
-                                        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
-                                    </Style>
-                                </MenuFlyout.MenuFlyoutPresenterStyle>
-                                <MenuFlyoutItem Text="Open"/>
-                                <MenuFlyoutSubItem Text="Send to">
-                                    <MenuFlyoutItem Text="Bluetooth"/>
-                                    <MenuFlyoutItem Text="Desktop (shortcut)" />
-                                    <MenuFlyoutSubItem Text="Compressed file">
-                                        <MenuFlyoutItem Text="Compress and email" />
-                                        <MenuFlyoutItem Text="Compress to .7z" />
-                                        <MenuFlyoutItem Text="Compress to .zip" />
-                                    </MenuFlyoutSubItem>
-                                </MenuFlyoutSubItem>
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </Button>
-                </StackPanel>
-            </muxc:NavigationView>
-        <ScrollViewer>
-            <Frame x:Name="ContentFrame"/>
-        </ScrollViewer>
-
-
-            <!--custom titlebar-->
-            <Grid x:Name="AppTitleBar" Background="Transparent" Height="28" Margin="40,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-
-
 
     </Grid>
 </Page>

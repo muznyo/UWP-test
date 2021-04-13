@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace TestUWP1
@@ -32,14 +25,14 @@ namespace TestUWP1
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-                // Get theme choice from LocalSettings.
-                object value = ApplicationData.Current.LocalSettings.Values["themeSetting"];
+            // Get theme choice from LocalSettings.
+            object value = ApplicationData.Current.LocalSettings.Values["themeSetting"];
 
-                if (value != null)
-                {
-                    // Apply theme choice.
-                    App.Current.RequestedTheme = (ApplicationTheme)(int)value;
-                }
+            if (value != null)
+            {
+                // Apply theme choice.
+                App.Current.RequestedTheme = (ApplicationTheme)(int)value;
+            }
         }
 
         /// <summary>
@@ -74,10 +67,35 @@ namespace TestUWP1
                     // Pokud není navigační zásobník obnovený, přejít na první stránku
                     // a nakonfigurovat novou stránku předáním požadovaných informací ve formě
                     // parametru navigace
-                    rootFrame.Navigate(typeof(Home), e.Arguments);
+                    rootFrame.Navigate(typeof(Nav), e.Arguments);
                 }
                 // Zkontrolovat, jestli je aktuální okno aktivní
                 Window.Current.Activate();
+            }
+            //titlebar stuff
+            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+            //hiding titlebar
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            //changing background for minimize, maximize and close buttons
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            titleBar.BackgroundColor = Colors.Transparent;
+
+            var isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
+
+            if (isDark)
+            {
+                titleBar.ButtonForegroundColor = Colors.White;
+                titleBar.ButtonHoverForegroundColor = Colors.White;
+                titleBar.ButtonHoverBackgroundColor = Colors.DarkGray;
+
+            }
+            else
+            {
+                titleBar.ButtonForegroundColor = Colors.Black;
+                titleBar.ButtonHoverForegroundColor = Colors.Black;
+                titleBar.ButtonHoverBackgroundColor = Colors.LightGray;
             }
         }
 

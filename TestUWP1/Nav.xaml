@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="TestUWP1.Nav"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestUWP1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <muxc:NavigationView x:Name="NavView" ItemInvoked="NavView_ItemInvoked"
+                             IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="True"
+                             CompactModeThresholdWidth="0" ExpandedModeThresholdWidth="750" PaneDisplayMode="Auto"
+                             Background="{ThemeResource SystemChromeMediumColor}">
+            
+            <muxc:NavigationView.AutoSuggestBox>
+                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
+            </muxc:NavigationView.AutoSuggestBox>
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Content="Domů" Tag="HomeNav" x:Name="HomeItem" >
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Content="Aplikace" Tag="AppNav">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE74C;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Content="Hudba" Tag="MusicNav">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8D6;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+            </muxc:NavigationView.MenuItems>
+            <muxc:NavigationView.FooterMenuItems>
+                <muxc:NavigationViewItemSeparator/>
+                <muxc:NavigationViewItem Content="Uživatel" Tag="UserNav">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE2AF;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Content="Nastavení" Tag="SettingsNav">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE115;"/>
+                    </muxc:NavigationViewItem.Icon>
+
+                </muxc:NavigationViewItem>
+
+            </muxc:NavigationView.FooterMenuItems>
+            <ScrollViewer>
+                <Frame x:Name="contentFrame"/>
+            </ScrollViewer>
+
+
+        </muxc:NavigationView>
+
+
+
+
+
+    </Grid>
+
+</Page>
