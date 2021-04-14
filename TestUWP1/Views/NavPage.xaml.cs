@@ -15,21 +15,21 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace TestUWP1
+namespace TestUWP1.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Nav : Page
+    public sealed partial class NavPage : Page
     {
-        public Nav()
+        public NavPage()
         {
             this.InitializeComponent();
-            contentFrame.Navigate(typeof(Home));
+            contentFrame.Navigate(typeof(HomePage));
             NavView.Header = "Home";
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
-        }
 
+        }
         private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             string navTo = args.InvokedItemContainer.Tag.ToString();
@@ -39,11 +39,11 @@ namespace TestUWP1
                 switch (navTo)
                 {
                     case "HomeNav":
-                        contentFrame.Navigate(typeof(Home));
+                        contentFrame.Navigate(typeof(HomePage));
                         NavView.Header = "Home";
                         break;
                     case "SettingsNav":
-                        contentFrame.Navigate(typeof(Settings));
+                        contentFrame.Navigate(typeof(SettingsPage));
                         NavView.Header = "Settings";
                         break;
                 }
@@ -51,5 +51,4 @@ namespace TestUWP1
         }
 
     }
-
 }

@@ -67,7 +67,7 @@ namespace TestUWP1
                     // Pokud není navigační zásobník obnovený, přejít na první stránku
                     // a nakonfigurovat novou stránku předáním požadovaných informací ve formě
                     // parametru navigace
-                    rootFrame.Navigate(typeof(Nav), e.Arguments);
+                    rootFrame.Navigate(typeof(Views.NavPage), e.Arguments);
                 }
                 // Zkontrolovat, jestli je aktuální okno aktivní
                 Window.Current.Activate();

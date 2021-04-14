@@ -18,14 +18,14 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace TestUWP1
+namespace TestUWP1.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Settings : Page
+    public sealed partial class SettingsPage : Page
     {
-        public Settings()
+        public SettingsPage()
         {
             this.InitializeComponent();
         }
@@ -44,7 +44,7 @@ namespace TestUWP1
         }
 
 
-        private async void restartButton_Click(object sender, RoutedEventArgs e)
+        private async void RestartButton_Click(object sender, RoutedEventArgs e)
         {
             var result = await CoreApplication.RequestRestartAsync("Application Restart Programmatically ");
 
@@ -58,19 +58,5 @@ namespace TestUWP1
 
         }
 
-        private async void Theme_RB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var result = await CoreApplication.RequestRestartAsync("Application Restart Programmatically ");
-
-            if (result == AppRestartFailureReason.NotInForeground ||
-                result == AppRestartFailureReason.RestartPending ||
-                result == AppRestartFailureReason.Other)
-            {
-                var msgBox = new MessageDialog("Restart Failed", result.ToString());
-                await msgBox.ShowAsync();
-            }
-
-
-        }
     }
 }

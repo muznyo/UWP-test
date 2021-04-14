@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="TestUWP1.Nav"
+    x:Class="TestUWP1.Views.NavPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TestUWP1"
+    xmlns:local="using:TestUWP1.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
@@ -14,7 +14,7 @@
                              IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="True"
                              CompactModeThresholdWidth="0" ExpandedModeThresholdWidth="750" PaneDisplayMode="Auto"
                              Background="{ThemeResource SystemChromeMediumColor}">
-            
+
             <muxc:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
             </muxc:NavigationView.AutoSuggestBox>
