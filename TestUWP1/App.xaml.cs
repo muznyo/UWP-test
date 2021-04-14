@@ -72,31 +72,7 @@ namespace TestUWP1
                 // Zkontrolovat, jestli je aktuální okno aktivní
                 Window.Current.Activate();
             }
-            //titlebar stuff
-            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
-            //hiding titlebar
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            //changing background for minimize, maximize and close buttons
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            titleBar.BackgroundColor = Colors.Transparent;
 
-            var isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
-
-            if (isDark)
-            {
-                titleBar.ButtonForegroundColor = Colors.White;
-                titleBar.ButtonHoverForegroundColor = Colors.White;
-                titleBar.ButtonHoverBackgroundColor = Colors.DarkGray;
-
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-                titleBar.ButtonHoverForegroundColor = Colors.Black;
-                titleBar.ButtonHoverBackgroundColor = Colors.LightGray;
-            }
         }
 
         /// <summary>

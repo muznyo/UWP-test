@@ -10,14 +10,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+
         <muxc:NavigationView x:Name="NavView" ItemInvoked="NavView_ItemInvoked"
                              IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="True"
-                             CompactModeThresholdWidth="0" ExpandedModeThresholdWidth="750" PaneDisplayMode="Auto"
                              Background="{ThemeResource SystemChromeMediumColor}">
 
-            <muxc:NavigationView.AutoSuggestBox>
-                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
-            </muxc:NavigationView.AutoSuggestBox>
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Content="Domů" Tag="HomeNav" x:Name="HomeItem" >
                     <muxc:NavigationViewItem.Icon>
@@ -53,13 +50,37 @@
             <ScrollViewer>
                 <Frame x:Name="contentFrame"/>
             </ScrollViewer>
-
-
         </muxc:NavigationView>
 
+        <Grid Height="32" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="DragGrid" Background="Transparent" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="20" Margin="10,4,0,0" Source="/Assets/StoreLogo.scale-100.png" />
+                    <TextBlock Text="UWP testing app" Margin="18,8,0,0" />
+                </StackPanel>
+            </Grid>
+        </Grid>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}" />
+                    </VisualState.StateTriggers>
 
-
+                    <VisualState.Setters>
+                        <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
     </Grid>
 

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +28,7 @@ namespace TestUWP1.Views
         public NavPage()
         {
             this.InitializeComponent();
+            CustomTitleBar();
             contentFrame.Navigate(typeof(HomePage));
             NavView.Header = "Home";
             NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
@@ -49,6 +53,39 @@ namespace TestUWP1.Views
                 }
             }
         }
+            public void CustomTitleBar()
+            {
+                //titlebar stuff
+                var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+                coreTitleBar.ExtendViewIntoTitleBar = true;
+                //hiding titlebar
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                //changing background for minimize, maximize and close buttons
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+                titleBar.BackgroundColor = Colors.Transparent;
+
+                var isDark = Application.Current.RequestedTheme == ApplicationTheme.Dark;
+
+                if (isDark)
+                {
+                    titleBar.ButtonForegroundColor = Colors.White;
+                    titleBar.ButtonHoverForegroundColor = Colors.White;
+                    titleBar.ButtonHoverBackgroundColor = Colors.DarkGray;
+
+                }
+                else
+                {
+                    titleBar.ButtonForegroundColor = Colors.Black;
+                    titleBar.ButtonHoverForegroundColor = Colors.Black;
+                    titleBar.ButtonHoverBackgroundColor = Colors.LightGray;
+                }
+                Window.Current.SetTitleBar(DragGrid);
+
+
+            }
+
+        }
 
     }
-}
+
