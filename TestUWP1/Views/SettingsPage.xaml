@@ -10,16 +10,12 @@
     Background="{ThemeResource SystemChromeMediumColor}">
 
     <Grid>
-        
-        <StackPanel>
-            
-            <muxc:RadioButtons x:Name="Theme_RB" Header="Theme:" FontSize="18" Margin="10,0,0,0">
-                <!--<RadioButton Content="System Default" Checked="System_Checked"/>-->
-                <RadioButton x:Name="Light_RB" Content="Light" Checked="Light_Checked"/>
-                <RadioButton x:Name="Dark_RB" Content="Dark" Checked="Dark_Checked"/>
-            </muxc:RadioButtons>
-            <Button x:Name="RestartButton" Background="{ThemeResource SystemAccentColor}" Margin="10" Click="RestartButton_Click">Restart</Button>
-        </StackPanel>
+            <ComboBox x:Name="ThemeBox" Header="Choose a theme" Margin="10,0"
+                          SelectionChanged="ThemeBox_SelectionChanged">
+                <x:String>Default</x:String>
+                <x:String>Light</x:String>
+                <x:String>Dark</x:String>
+            </ComboBox>
         <Frame x:Name="contentFrame"/>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TestUWP1;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,34 +29,17 @@ namespace TestUWP1.Views
         public SettingsPage()
         {
             this.InitializeComponent();
-        }
-
-        private void Light_Checked(object sender, RoutedEventArgs e)
-        {
-            ((RadioButton)sender).IsChecked = App.Current.RequestedTheme == ApplicationTheme.Light;
-            ApplicationData.Current.LocalSettings.Values["themeSetting"] = ((RadioButton)sender)?.Tag?.ToString();
-        }
-
-        private void Dark_Checked(object sender, RoutedEventArgs e)
-        {
-            ((RadioButton)sender).IsChecked = App.Current.RequestedTheme == ApplicationTheme.Dark;
-            ApplicationData.Current.LocalSettings.Values["themeSetting"] = ((RadioButton)sender)?.Tag?.ToString();
-
+            SettingsManager.AppThemeChanged += SettingsManager_AppThemeChanged;
         }
 
 
-        private async void RestartButton_Click(object sender, RoutedEventArgs e)
+        private void SettingsManager_AppThemeChanged(ElementTheme value)
         {
-            var result = await CoreApplication.RequestRestartAsync("Application Restart Programmatically ");
-
-            if (result == AppRestartFailureReason.NotInForeground ||
-                result == AppRestartFailureReason.RestartPending ||
-                result == AppRestartFailureReason.Other)
-            {
-                var msgBox = new MessageDialog("Restart Failed", result.ToString());
-                await msgBox.ShowAsync();
-            }
-
+            ThemeBox.SelectedValue = SettingsManager.GetAppThemeName();
+        }
+        private void ThemeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SettingsManager.SetAppTheme(e.AddedItems[0].ToString());
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TestUWP1;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
@@ -72,7 +73,8 @@ namespace TestUWP1
                 // Zkontrolovat, jestli je aktuální okno aktivní
                 Window.Current.Activate();
             }
-
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            SettingsManager.ApplyAppTheme(SettingsManager.GetAppTheme());
         }
 
         /// <summary>
