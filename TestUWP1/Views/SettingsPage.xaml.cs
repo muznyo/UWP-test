@@ -29,14 +29,10 @@ namespace TestUWP1.Views
         public SettingsPage()
         {
             this.InitializeComponent();
-            SettingsManager.AppThemeChanged += SettingsManager_AppThemeChanged;
-        }
-
-
-        private void SettingsManager_AppThemeChanged(ElementTheme value)
-        {
             ThemeBox.SelectedValue = SettingsManager.GetAppThemeName();
         }
+
+
         private void ThemeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SettingsManager.SetAppTheme(e.AddedItems[0].ToString());

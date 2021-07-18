@@ -63,11 +63,7 @@ namespace TestUWP1
             {
                 frameworkElement.RequestedTheme = theme;
             }
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            titleBar.BackgroundColor = Colors.Transparent;
-
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             switch (theme)
             {
                 case ElementTheme.Default:
@@ -77,6 +73,7 @@ namespace TestUWP1
 
                 case ElementTheme.Light:
                     titleBar.ButtonHoverBackgroundColor = Color.FromArgb(51, 0, 0, 0);
+                    titleBar.ButtonHoverForegroundColor = Colors.Black;
                     titleBar.ButtonForegroundColor = Colors.Black;
                     break;
 

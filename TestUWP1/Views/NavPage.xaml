@@ -7,28 +7,50 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+    <Page.Resources>
+        <!--This top margin is the height of the custom TitleBar-->
+        <Thickness x:Key="NavigationViewContentMargin">0,37,0,0</Thickness>
+    </Page.Resources>
     <Grid>
-
-        <muxc:NavigationView x:Name="NavView" ItemInvoked="NavView_ItemInvoked"
-                             IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="True"
-                             Background="{ThemeResource SystemChromeMediumColor}">
+        <Border x:Name="AppTitleBar"
+                IsHitTestVisible="True"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Height="40"
+                Canvas.ZIndex="1">
+            <StackPanel Orientation="Horizontal" Margin="16,0,0,0">
+                <Image x:Name="AppFontIcon"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center"
+                    Source="/Assets/StoreLogo.scale-100.png" 
+                    Width="16" 
+                    Height="16"/>
+                <TextBlock x:Name="AppTitle"
+                    Text="UWP testing app"
+                    VerticalAlignment="Center"
+                    Margin="12, 0, 0, 0"
+                    Style="{StaticResource CaptionTextBlockStyle}" />
+            </StackPanel>
+        </Border>
+        <muxc:NavigationView x:Name="NavView" ItemInvoked="NavView_ItemInvoked"  
+                             IsBackButtonVisible="Collapsed" IsTitleBarAutoPaddingEnabled="True"
+                             PaneDisplayMode="LeftCompact"  >
 
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Domů" Tag="HomeNav" x:Name="HomeItem" >
+                <muxc:NavigationViewItem Content="Domů" Tag="HomeNav" x:Name="HomeItem">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;"/>
+                        <FontIcon Glyph="&#xE80F;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Aplikace" Tag="AppNav">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE74C;"/>
+                        <FontIcon Glyph="&#xE74C;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Content="Hudba" Tag="MusicNav">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8D6;"/>
+                        <FontIcon Glyph="&#xE8D6;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
@@ -36,52 +58,14 @@
                 <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItem Content="Uživatel" Tag="UserNav">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE2AF;"/>
+                        <FontIcon Glyph="&#xE2AF;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Content="Nastavení" Tag="SettingsNav">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE115;"/>
-                    </muxc:NavigationViewItem.Icon>
-
-                </muxc:NavigationViewItem>
-
             </muxc:NavigationView.FooterMenuItems>
             <ScrollViewer>
                 <Frame x:Name="contentFrame"/>
             </ScrollViewer>
         </muxc:NavigationView>
-
-        <Grid Height="32" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="32"/>
-            </Grid.RowDefinitions>
-            <Grid x:Name="DragGrid" Background="Transparent" Grid.Column="1">
-                <StackPanel Orientation="Horizontal">
-                    <Image Height="20" Margin="10,4,0,0" Source="/Assets/StoreLogo.scale-100.png" />
-                    <TextBlock Text="UWP testing app" Margin="18,8,0,0" />
-                </StackPanel>
-            </Grid>
-        </Grid>
-
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger
-                        MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}" />
-                    </VisualState.StateTriggers>
-
-                    <VisualState.Setters>
-                        <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-
     </Grid>
 
 </Page>
